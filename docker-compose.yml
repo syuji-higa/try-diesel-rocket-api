@@ -1,0 +1,16 @@
+# docker-compose.yml
+version: '3'
+services:
+  db:
+    image: postgres:12.2-alpine
+    container_name: db-container 
+    ports: 
+      - "5432:5432"
+    environment:
+      - POSTGRES_USER=postgres
+      - POSTGRES_PASSWORD=mysecretpassword1234
+      - PGPASSWORD=mysecretpassword1234
+      - POSTGRES_DB=testdb
+      - DATABASE_HOST=localhost
+    volumes:
+      - ./docker/db/init:/docker-entrypoint-initdb.d
